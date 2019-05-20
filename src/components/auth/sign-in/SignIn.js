@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './SignUp.css';
+import './SignIn.css';
 
 class SignIn extends Component{
     render(){
