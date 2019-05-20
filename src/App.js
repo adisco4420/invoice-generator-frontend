@@ -14,9 +14,9 @@ class App extends Component {
           <BrowserRouter>
             <div>
             
-            <Route path='/signup' component={SignUp} />
-            <Route path='/signin' component={SignIn} />
-            <Route path='/setup' component={Setup} />
+            <Route exact path='/' component={SignUp} />
+            <Route exact path='/signin' component={SignIn} />
+            <Route exact path='/setup' component={Setup} />
              
             </div>
 
