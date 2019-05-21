@@ -19,7 +19,7 @@ class SignIn extends Component {
                                 <input type="password" required className="form-control" name="password" placeholder="Password" />
                             </div>
                             <button type="submit" className="btn-lg button"> Login</button>
-                            <div className="text-center mt-2">You don't have an account? <Link to="/">Register</Link></div>
+                            <div className="text-center mt-2">You don't have an account? <Link to="/signup">Register</Link></div>
                         </form>
                     </div>
                 </div>
