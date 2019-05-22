@@ -7,8 +7,9 @@ import {
     FormBuilder,
     FieldGroup,
     FieldControl,
-    Validators
+    Validators,
 } from "react-reactive-form";
+
 const TextInput = ({ handler, touched, hasError, meta }) => (
     <div className={`${meta.inputClass || "col-md-12"} mb-2`}>
         <input
@@ -28,23 +29,24 @@ const TextInput = ({ handler, touched, hasError, meta }) => (
 class SignUp extends Component {
     state = {
         loading: false,
-        errMsg: null
+        errMsg: null,
+        testing: true
     }
     storeToken(token) {
         localStorage.setItem('Invoice-Reg-Token', token)
     }
 
     registerUser = async () => {
-        this.setState({loading: true, errMsg: false})
+        this.setState({ loading: true, errMsg: false })
         try {
             const res = await axios.post(`${env.Invoice_API}/user/register`, this.registerForm.value)
             this.storeToken(res.data.data.token)
             this.props.history.push('/setup')
             // console.log(res.data.data);
         } catch (error) {
-            this.setState({loading: false, errMsg: error.response.data.message})
+            this.setState({ loading: false, errMsg: error.response.data.message })
             console.log(error.response);
-            
+
         }
     }
     registerForm = FormBuilder.group({
@@ -62,19 +64,23 @@ class SignUp extends Component {
         return (
             <React.Fragment>
 
-                <div className="container">
-                    <div className="layout">
-                        <div className="formheader">
+                <div className="container py-5">
+                  <div className="row">
+                  <div className="col-md-4 offset-md-4">
+                        <div className="formheader bg-blued">
                             <h3> Create a new account</h3>
-                            {this.state.loading  ? <i className="fa fa-spinner  fa-spin"></i> : ''}
-                                </div>
-                                {this.state.errMsg && <div className="bg-danger text-center text-light">{this.state.errMsg}</div>}
-                
+                            {this.state.loading ? <i className="fa fa-spinner  fa-spin"></i> : ''}
+                        </div>
+                        {this.state.errMsg && <div className="bg-danger text-center text-light">{this.state.errMsg}</div>}
+
                         <FieldGroup
                             control={this.registerForm}
-                            render={({ get, invalid, submitted, }) => (
+                            render={({ get, invalid, submitted, pending }) => (
                                 <form onSubmit={this.handleSubmit} className="formlayout">
                                     <div className="row">
+                                        <React.Fragment>
+                                            {pending && <i className="fa fa-spinner fa-spin" />}
+                                        </React.Fragment>
                                         <div className="col-md-12">
                                         </div>
                                     </div>
@@ -82,13 +88,13 @@ class SignUp extends Component {
                                         <FieldControl
                                             name="email"
                                             render={TextInput}
-                                            meta={{ label: "Email Address" , type: 'email'}}
+                                            meta={{ label: "Email Address", type: 'email' }}
                                         />
 
                                         <FieldControl
                                             name="phoneNumber"
                                             render={TextInput}
-                                            meta={{ label: "Phone Number" , type: 'number'}}
+                                            meta={{ label: "Phone Number", type: 'number' }}
                                         />
 
                                         <FieldControl
@@ -97,16 +103,18 @@ class SignUp extends Component {
                                             meta={{ label: "Password", type: 'password' }}
                                         />
                                     </div>
-                                    <button disabled={invalid} style={invalid ? { opacity: '0.8' } : { opacity: '1' }} type="submit" className="btn-lg button">
+                                    <button disabled={invalid} style={invalid ? { opacity: '0.8' } : { opacity: '1' }} 
+                                    type="submit" className="btn btn-block mt-3 bg-blued">
                                         Register
-                  </button>
-                  <div className="text-center mt-2">Already Registered? <Link to="/signin">Login</Link></div>
+                                    </button>
+                                    <div className="text-center mt-2">Already Registered? <Link to="/signin">Login</Link></div>
                                 </form>
                             )}
                         />
 
                     </div>
 
+                  </div>
 
                 </div>
 

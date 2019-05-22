@@ -1,0 +1,27 @@
+.top-nav{
+    background: url('https://invoice.ng/assets/images/graphics/colored.png');
+    height: 5px
+}
+@media(min-width:800px) {
+    .navbar{
+        padding: 2% 7%
+    }
+}
+.navbar .icon{
+    width: 35px
+}
+.navbar .title{
+    font-weight: 500;
+    color: #10374a !important;
+}
+.navbar  .nav-link{
+    color: #10374a !important;
+    font-weight: 600;
+}
+.sign-up-btn{
+    border-radius: 15px;
+    background: #10374a;
+    border: #10374a;
+    padding: 5px 17px;
+    color: white !important
+}

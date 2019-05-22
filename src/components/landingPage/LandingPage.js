@@ -1,75 +1,64 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './landingPage.css';
-import image1 from './assets/Image1.jpg';
-import image2 from './assets/image2.jpg';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+const centerImgLink = 'https://www.intelledox.com/wp-content/uploads/2018/04/Thre-young-people-using-laptop-in-office-Large.jpg';
 
-class LandingPage extends React.Component{
+class LandingPage extends React.Component {
 
-    render(){
-        return(
-            <div className="container-fluid">
-                <section>
-                        <nav className="navbar navbar-expand-lg">
-                        <Link className="navbar-brand" to="/">invoiceME</Link>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-
-                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul className="navbar-nav mr-auto">
-                                <li className="nav-item active">
-                                    <a className="nav-link">About<span class="sr-only">(current)</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link">Contact</a>
-                                </li>
-                              
-                                </ul>
-                                <div className="form-inline my-2 my-lg-0">
-                                    <Link to="/signin" className="btn btn-link" >Sign In</Link>
-                                    <Link to="/signup" className="btn btn-success my-2 my-sm-0" >Sign Up</Link>
-                                </div>
+    render() {
+        return (
+            <React.Fragment>            
+                <div className="body-great py-5 middle-sec">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 py-5">
+                            <div className="text-top">
+                                <h1>Get paid faster and <br /> improve cash flow</h1>
                             </div>
-                        </nav>
-                </section>
+                            <div className="mt-5">
+                                <h4 className="text-muted">Professional Online Invoicing &amp;  Billing Software
+                                    for Small Business Owners &amp; Freelancers</h4>
+                            </div>
+                            <div className="mt-5">
+                                <Link to="/signup" className="btn bg-blue">Send Invoice Now</Link>
+                            </div>
 
-                <section>
-                    <div className="flex-container">
-                    <div className="getPaid">
-                        <h1 className="header1">Get paid faster and improved your cash flow</h1><br/>
-                        <h5 className="header2">Professional Online Invoicing and Billing Software for Small Businessed Owners and Freelancers</h5>
-                        <button className="btn btn-success my-2 my-sm-0 start" type="submit">Get started now!</button>
-                    </div>
-                    <div className="getPaidImage">
-                        <div className="techGuys">
-                            <img src={image1} alt="image" width="400px" height="400px" className="invoice1"/>
+                        </div>
+                        <div className="col-md-6">
+                            <img className="img-thumbnail" width="100%" src={centerImgLink} alt="imagewithpeople" />
                         </div>
                     </div>
-                    </div>
-                </section>
-
-                <section>
-                <div className="flex-container">
-                    <div className="getPaid2">
-                    <h1 className="header1" style={{color: "white"}}>Tired of looking for where, ways and how to print?</h1><br/>
-                        <h5 className="header2" style={{color: "white"}}>Worry no more with our App, you ca get paid right on time.</h5>
-                    </div>
-                    <div className="getPaidImage2">
-                        <div className="techGuys2">
-                        <img src={image2} alt="image" width="400px" height="200px" className="invoice1"/>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-                <section>
-                    <div className="footer">
-                        <h5 style={{marginTop:"60px"}}>Powered by us</h5>
-                    </div>
-                </section>
-                
+                </div>
             </div>
+                <div className="bg-blued">
+                    <div className="container">
+                        <div className="row text-center py-4">
+                            <div className="col-md-4">
+                            <i className="fa fa-clock-o fa-3x"></i>
+                                <h5>Save more time</h5>
+                                <p>Make getting paid a breeze. Our solution helps
+                                    you save time on chasing payments and helps
+                                   you get paid faster.</p>
+                            </div>
+                            <div className="col-md-4">
+                            <i className="fa  fa-history fa-3x"></i>
+                                <h5>Get more productive</h5>
+                                <p>Set up automatic payment reminders to gently remind 
+                                    clients when a payment is coming up, due, or late.</p>
+                            </div>
+                            <div className="col-md-4">
+                            <i className="fa  fa-th-large fa-3x"></i>
+                                <h5>Grow your revenue</h5>
+                                <p>Easily grow your revenue. With Invoice, staying on 
+                                    top of your business financing has never been easier.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </React.Fragment>
+
         );
     }
 }
