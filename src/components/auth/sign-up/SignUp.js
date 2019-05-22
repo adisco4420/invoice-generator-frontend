@@ -7,8 +7,20 @@ import {
     FormBuilder,
     FieldGroup,
     FieldControl,
-    Validators
+    Validators,
+    AbstractControl
 } from "react-reactive-form";
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+const asyncValidator = (control) => {
+  return sleep(1000).then(() => {
+    if (["jon", "hodor", "mountain", "arya"].includes(control.value)) {
+      return null;
+    } else {
+      throw { notExist: true };
+    }
+  });
+};
 const TextInput = ({ handler, touched, hasError, meta }) => (
     <div className={`${meta.inputClass || "col-md-12"} mb-2`}>
         <input
@@ -28,7 +40,8 @@ const TextInput = ({ handler, touched, hasError, meta }) => (
 class SignUp extends Component {
     state = {
         loading: false,
-        errMsg: null
+        errMsg: null,
+        testing: true
     }
     storeToken(token) {
         localStorage.setItem('Invoice-Reg-Token', token)
@@ -48,7 +61,7 @@ class SignUp extends Component {
         }
     }
     registerForm = FormBuilder.group({
-        email: ["", [Validators.required, Validators.email]],
+        email: ["", [Validators.required, Validators.email], asyncValidator],
         phoneNumber: ["", [Validators.required, Validators.minLength(11)]],
         password: ["", Validators.required],
     });
@@ -72,9 +85,12 @@ class SignUp extends Component {
                 
                         <FieldGroup
                             control={this.registerForm}
-                            render={({ get, invalid, submitted, }) => (
+                            render={({ get, invalid, submitted,  pending}) => (
                                 <form onSubmit={this.handleSubmit} className="formlayout">
                                     <div className="row">
+                                    <React.Fragment>
+                                    {pending && <i className="fa fa-spinner fa-spin" />}
+                                    </React.Fragment>
                                         <div className="col-md-12">
                                         </div>
                                     </div>
