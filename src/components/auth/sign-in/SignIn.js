@@ -6,9 +6,10 @@ class SignIn extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="container">
-                    <div className="layout">
-                        <div className="formheader">
+                <div className="container py-5">
+                    <div className="row">
+                    <div className="col-md-4 offset-md-4">
+                        <div className="formheader bg-blued">
                             <h3> Welcome Back</h3>
                         </div>
                         <form className="formlayout">
@@ -18,9 +19,11 @@ class SignIn extends Component {
                             <div className="form-group">
                                 <input type="password" required className="form-control" name="password" placeholder="Password" />
                             </div>
-                            <button type="submit" className="btn-lg button"> Login</button>
+                            <button type="submit" className="btn btn-block bg-blued mt-3"> Login</button>
                             <div className="text-center mt-2">You don't have an account? <Link to="/signup">Register</Link></div>
                         </form>
+                    </div>
+           
                     </div>
                 </div>
             </React.Fragment>

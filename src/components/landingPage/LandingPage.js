@@ -35,20 +35,20 @@ class LandingPage extends React.Component {
                     <div className="container">
                         <div className="row text-center py-4">
                             <div className="col-md-4">
-                            <i class="fa fa-clock-o fa-3x"></i>
+                            <i className="fa fa-clock-o fa-3x"></i>
                                 <h5>Save more time</h5>
                                 <p>Make getting paid a breeze. Our solution helps
                                     you save time on chasing payments and helps
                                    you get paid faster.</p>
                             </div>
                             <div className="col-md-4">
-                            <i class="fa  fa-history fa-3x"></i>
+                            <i className="fa  fa-history fa-3x"></i>
                                 <h5>Get more productive</h5>
                                 <p>Set up automatic payment reminders to gently remind 
                                     clients when a payment is coming up, due, or late.</p>
                             </div>
                             <div className="col-md-4">
-                            <i class="fa  fa-th-large fa-3x"></i>
+                            <i className="fa  fa-th-large fa-3x"></i>
                                 <h5>Grow your revenue</h5>
                                 <p>Easily grow your revenue. With Invoice, staying on 
                                     top of your business financing has never been easier.</p>

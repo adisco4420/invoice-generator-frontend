@@ -115,9 +115,11 @@ class Setup extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <div className="layout">
-            <div className="formheader">
+        <div className="container py-5">
+          <div className="row">
+            <div >
+            <div className="col-md-4 offset-md-4">
+            <div className="formheader bg-blued">
               <h3> Setup Account</h3>
               {this.state.loading  ? <i className="fa fa-spinner fa-spin"></i> : ''}
             </div>
@@ -139,7 +141,6 @@ class Setup extends React.Component {
                       render={TextInput}
                       meta={{ label: "First Name" }}
                     />
-
                     <FieldControl
                       name="lastName"
                       render={TextInput}
@@ -162,16 +163,18 @@ class Setup extends React.Component {
                       render={SelectBox}
                     />
                   </div>
-                  <button disabled={invalid || this.state.loading } style={invalid ? { opacity: '0.8' } : { opacity: '1' }} type="submit" className="btn-lg button">
+                  <button disabled={invalid || this.state.loading } style={invalid ? { opacity: '0.8' } : { opacity: '1' }} 
+                          type="submit" className="btn btn-block mt-3 bg-blued">
                     Setup
                   </button>
                 </form>
               )}
             />
-
-
           </div>
-        </div>
+       
+            </div>
+          </div>
+          </div>
       </React.Fragment>
     );
   }
