@@ -32,7 +32,7 @@ function Header() {
                             <Link to="signin" className="nav-link">Sign In</Link>
                         </li>
                         <li className="nav-item ml-2">
-                            <Link to="/" className=" btn btn-primary sign-up-btn" >Sign Up Free</Link>
+                            <Link to="/signup" className=" btn btn-primary sign-up-btn" >Sign Up Free</Link>
                         </li>
                     </ul>
 
