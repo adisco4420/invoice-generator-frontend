@@ -7,6 +7,7 @@ import {
   FieldControl,
   Validators
 } from "react-reactive-form";
+import { brandLogo } from "../../../utils";
 const busCat = ['Individual/Freelancing', 'Accounting & Bookeeping', 'Agriculture', 'Association or Club',
   'Automotive', 'Business Consulting', 'Clinics & Healthcare Services', 'Constructions & Engineering',
   'Education', 'Entertainment and Arts', 'Financial Services', 'Hotels & Hospitality', 'HR & Recruiting',
@@ -174,6 +175,12 @@ class Setup extends React.Component {
        
             </div>
           </div>
+          <div className="row">
+                        <div className="col-md-4 offset-md-4">
+                            <img style={brandLogo.style} alt="icon" src={brandLogo.link}/> 
+                            <h3 className='text-center text-blue'>InvoiceNG</h3>
+                        </div>
+                    </div>
           </div>
       </React.Fragment>
     );
