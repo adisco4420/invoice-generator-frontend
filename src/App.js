@@ -7,6 +7,7 @@ import Setup from './components/auth/setup/Setup';
 import LandingPage from './components/landingPage/LandingPage';
 import Header from './components/core/header/Header';
 import './App.css'
+import Footer from './components/core/footer/Footer';
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
             <Route exact path='/signup' component={SignUp} />
             <Route exact path='/signin' component={SignIn} />
             <Route exact path='/setup' component={Setup} />
-             
+             <Footer />
             </div>
 
 
