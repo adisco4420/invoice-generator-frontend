@@ -24,7 +24,7 @@ a:focus {
     transition: all 0.3s;
 }
 
-.navbar {
+.navbar.dashnav {
     padding: 15px 10px;
     background: #fff;
     border: none;
