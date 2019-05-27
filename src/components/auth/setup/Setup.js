@@ -72,7 +72,8 @@ class Setup extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchCurrency()
+    if(!localStorage.getItem('Invoice-Reg-Token')) return this.props.history.push('/');
+    this.fetchCurrency();
   }
   setupform = FormBuilder.group({
     businessName: ["", Validators.required],
