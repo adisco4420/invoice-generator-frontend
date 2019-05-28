@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import env from '../../../env';
 import './SignIn.css';
+import { brandLogo } from '../../../utils';
 
 class SignIn extends Component {
     storeToken(token) {
@@ -13,7 +14,6 @@ class SignIn extends Component {
         try {
             const body = {email: this.state.email, password: this.state.password}
             const res = await axios.post(`${env.Invoice_API}/user/login`, body);
-            console.log(res.data);
             this.setState({loading: false, sucMsg: true})
             this.storeToken(res.data.data.token)
         } catch (error) {
@@ -65,6 +65,12 @@ class SignIn extends Component {
                             <div className="text-center mt-2">You don't have an account? <Link to="/signup">Register</Link></div>
                         </form>
                     </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-4 offset-md-4">
+                            <img style={brandLogo.style} alt="icon" src={brandLogo.link}/> 
+                            <h3 className='text-center text-blue'>InvoiceNG</h3>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

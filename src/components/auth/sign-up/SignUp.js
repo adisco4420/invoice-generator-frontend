@@ -9,6 +9,7 @@ import {
     FieldControl,
     Validators,
 } from "react-reactive-form";
+import { brandLogo } from '../../../utils';
 
 const TextInput = ({ handler, touched, hasError, meta }) => (
     <div className={`${meta.inputClass || "col-md-12"} mb-2`}>
@@ -115,7 +116,12 @@ class SignUp extends Component {
                     </div>
 
                   </div>
-
+                  <div className="row">
+                        <div className="col-md-4 offset-md-4">
+                            <img style={brandLogo.style} alt="icon" src={brandLogo.link}/> 
+                            <h3 className='text-center text-blue'>InvoiceNG</h3>
+                        </div>
+                    </div>
                 </div>
 
 
