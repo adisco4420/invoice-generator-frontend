@@ -43,7 +43,7 @@ class SignIn extends Component {
                     <div className="col-md-4 offset-md-4">
                         <div className="formheader bg-blued">
                             <h3> Welcome Back</h3>
-                            {this.state.loading && <i className="fa fa-spinner fa-spin"></i>}
+                          {this.state.loading && <div> <span className="fa fa-spinner fa-spin"></span></div>}
                         </div>
                        
                             {this.state.errMsg && <div className="bg-danger text-center text-light">
