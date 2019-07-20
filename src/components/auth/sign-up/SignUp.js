@@ -46,7 +46,7 @@ class SignUp extends Component {
             // console.log(res.data.data);
         } catch (error) {
             this.setState({ loading: false, errMsg: error.response.data.message })
-            console.log(error.response);
+            // console.log(error.response);
 
         }
     }

@@ -94,6 +94,11 @@ class Setup extends React.Component {
       console.log(error);
     }
   }
+  toDashboard() {
+    setTimeout(() => {
+      this.props.history.push('/dashboard');
+    }, 1500);
+  }
   setupAccount = async () => {
     this.setState({loading: true, errMsg: false})
     try {
@@ -104,6 +109,7 @@ class Setup extends React.Component {
       console.log(res);
       this.setState({loading: false, sucMsg: true})
       this.clearStorage();
+      this.toDashboard();
     } catch (error) {
       this.setState({loading: false, errMsg: error.response.data.message})
       console.log(error.response);
@@ -123,7 +129,7 @@ class Setup extends React.Component {
             <div className="col-md-4 offset-md-4">
             <div className="formheader bg-blued">
               <h3> Setup Account</h3>
-              {this.state.loading  ? <i className="fa fa-spinner fa-spin"></i> : ''}
+              {this.state.loading  ? <div><i className="fa fa-spinner fa-spin"></i></div> : ''}
             </div>
             {this.state.errMsg && <div className="bg-danger text-center text-light">{this.state.errMsg}</div>}
             {this.state.sucMsg && <div className="bg-success text-center text-light">Setup is successful</div>}
