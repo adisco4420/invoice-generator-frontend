@@ -103,16 +103,16 @@ class Setup extends React.Component {
     this.setState({loading: true, errMsg: false})
     try {
       const token = localStorage.getItem('Invoice-Reg-Token')
-      const res = await axios.patch(`${env.Invoice_API}/user/setup`, this.setupform.value, {
+      await axios.patch(`${env.Invoice_API}/user/setup`, this.setupform.value, {
         headers: {'Authorization': `Bearer ${token}`}
       });
-      console.log(res);
+      // console.log(res);
       this.setState({loading: false, sucMsg: true})
       this.clearStorage();
       this.toDashboard();
     } catch (error) {
       this.setState({loading: false, errMsg: error.response.data.message})
-      console.log(error.response);
+      // console.log(error.response);
       
     }
   }
