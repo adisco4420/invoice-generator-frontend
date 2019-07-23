@@ -8,6 +8,10 @@ import { brandLogo } from '../../../utils';
 class SignIn extends Component {
     storeToken(token) {
         localStorage.setItem('currentUserInvoiceNG', token)
+        setTimeout(() => {
+            window.location = '/dashboard'
+            // this.props.history.push('/dashboard');
+        }, 1500);
     }
     loginUser = async () => {
         this.setState({loading: true, errMsg: false, sucMsg: false})
@@ -16,8 +20,9 @@ class SignIn extends Component {
             const res = await axios.post(`${env.Invoice_API}/user/login`, body);
             this.setState({loading: false, sucMsg: true})
             this.storeToken(res.data.data.token)
-        } catch (error) {
-            this.setState({loading: false, errMsg: error.response.data.message})
+        } catch ({message}) {
+            const err = message.message ? message.message : message;
+            this.setState({loading: false, errMsg: err})
         }
     }
     state = {

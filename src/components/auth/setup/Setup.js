@@ -110,8 +110,9 @@ class Setup extends React.Component {
       this.setState({loading: false, sucMsg: true})
       this.clearStorage();
       this.toDashboard();
-    } catch (error) {
-      this.setState({loading: false, errMsg: error.response.data.message})
+    } catch ({message}) {
+      const err = message.message ? message.message : message;      
+      this.setState({loading: false, errMsg: err})
       // console.log(error.response);
       
     }

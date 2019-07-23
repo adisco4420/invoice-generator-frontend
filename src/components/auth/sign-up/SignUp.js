@@ -44,8 +44,9 @@ class SignUp extends Component {
             this.storeToken(res.data.data.token)
             this.props.history.push('/setup')
             // console.log(res.data.data);
-        } catch (error) {
-            this.setState({ loading: false, errMsg: error.response.data.message })
+        } catch ({message}) {
+            const err = message.message ? message.message : message;
+            this.setState({ loading: false, errMsg: err })
             // console.log(error.response);
 
         }
