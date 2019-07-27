@@ -44,9 +44,10 @@ class SignUp extends Component {
             this.storeToken(res.data.data.token)
             this.props.history.push('/setup')
             // console.log(res.data.data);
-        } catch (error) {
-            this.setState({ loading: false, errMsg: error.response.data.message })
-            console.log(error.response);
+        } catch ({message}) {
+            const err = message.message ? message.message : message;
+            this.setState({ loading: false, errMsg: err })
+            // console.log(error.response);
 
         }
     }
@@ -70,7 +71,7 @@ class SignUp extends Component {
                   <div className="col-md-4 offset-md-4">
                         <div className="formheader bg-blued">
                             <h3> Create a new account</h3>
-                            {this.state.loading ? <i className="fa fa-spinner  fa-spin"></i> : ''}
+                            {this.state.loading && <div> <span className="fa fa-spinner fa-spin"></span></div>}
                         </div>
                         {this.state.errMsg && <div className="bg-danger text-center text-light">{this.state.errMsg}</div>}
 

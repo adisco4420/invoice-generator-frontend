@@ -5,10 +5,10 @@ function Footer() {
         <div className="container">
           <span className="text-light">&copy; 2019 InvoiceNG - All Rights Reserved.</span>
           <div className="float-right text-light">
-              <i className="fa fa-facebook ml-2 "></i>
-              <i className="fa fa-twitter ml-2 "></i>
-              <i className="fa fa-instagram ml-2 "></i>
-              <i className="fa fa-whatsapp ml-2 "></i>
+          <span className="fab fa-facebook-f ml-2"></span>
+              <span className="fab fa-twitter ml-2 "></span>
+              <span className="fab fa-instagram ml-2 "></span>
+              <span className="fab fa-whatsapp ml-2 "></span>
           </div>
         </div>
       </footer>

@@ -6,7 +6,7 @@ function SideBar() {
     return (
         <nav id="sidebar">
             <div className="sidebar-header">
-            <h4 onClick={() => window.location.replace('/')} style={{cursor: 'pointer'}}><img style={{ width: '15%' }} alt="icon" src={brandLogo.link} /> Invoice NG</h4>
+            <Link to="/"><h4><img style={{ width: '15%' }} alt="icon" src={brandLogo.link} /> Invoice NG</h4></Link>
             </div>
 
             <ul className="sidebar-list">

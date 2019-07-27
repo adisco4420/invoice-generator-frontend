@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import env from '../../../env';
+import {  user } from '../../../services/auth'
 import {
   FormBuilder,
   FieldGroup,
@@ -16,6 +17,7 @@ const busCat = ['Individual/Freelancing', 'Accounting & Bookeeping', 'Agricultur
   'Social Services', 'Shipping and Logistics', 'Tourism', 'Web Development & Graphics Design', 'Others'
 ]
 let allCurrencys = {}
+const regToken = localStorage.getItem('Invoice-Reg-Token')
 const TextInput = ({ handler, touched, hasError, meta }) => (
   <div className={`${meta.inputClass || "col-md-12"} mb-2`}>
     <input
@@ -72,7 +74,7 @@ class Setup extends React.Component {
   }
 
   componentDidMount() {
-    if(!localStorage.getItem('Invoice-Reg-Token')) return this.props.history.push('/');
+    if(!user && !regToken) return this.props.history.push('/');
     this.fetchCurrency();
   }
   setupform = FormBuilder.group({
@@ -94,19 +96,26 @@ class Setup extends React.Component {
       console.log(error);
     }
   }
+  toDashboard() {
+    setTimeout(() => {
+      this.props.history.push('/dashboard');
+    }, 1500);
+  }
   setupAccount = async () => {
     this.setState({loading: true, errMsg: false})
+    const token = regToken || user;
     try {
-      const token = localStorage.getItem('Invoice-Reg-Token')
-      const res = await axios.patch(`${env.Invoice_API}/user/setup`, this.setupform.value, {
+      await axios.patch(`${env.Invoice_API}/user/setup`, this.setupform.value, {
         headers: {'Authorization': `Bearer ${token}`}
       });
-      console.log(res);
+      // console.log(res);
       this.setState({loading: false, sucMsg: true})
       this.clearStorage();
-    } catch (error) {
-      this.setState({loading: false, errMsg: error.response.data.message})
-      console.log(error.response);
+      this.toDashboard();
+    } catch ({message}) {
+      const err = message.message ? message.message : message;      
+      this.setState({loading: false, errMsg: err})
+      // console.log(error.response);
       
     }
   }
@@ -123,7 +132,7 @@ class Setup extends React.Component {
             <div className="col-md-4 offset-md-4">
             <div className="formheader bg-blued">
               <h3> Setup Account</h3>
-              {this.state.loading  ? <i className="fa fa-spinner fa-spin"></i> : ''}
+              {this.state.loading  ? <div><i className="fa fa-spinner fa-spin"></i></div> : ''}
             </div>
             {this.state.errMsg && <div className="bg-danger text-center text-light">{this.state.errMsg}</div>}
             {this.state.sucMsg && <div className="bg-success text-center text-light">Setup is successful</div>}
