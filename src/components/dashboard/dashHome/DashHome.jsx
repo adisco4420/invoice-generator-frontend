@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 import Graph from '../../../common/graph';
 import Tips from './tips';
-const accounts = [
-    { title: 'income', balance: 2000.00, icon: '' },
-    { title: 'expense', balance: 5000.00, icon: 'text-success fa-credit-card' },
-    { title: 'outstaning', balance: 1000.00, icon: 'text-danger fa-eye' }
-]
-function bgColor(title) {
-    switch (title) {
-        case 'income':
-            return 'bg-success'
-        case 'expense':
-            return 'bg-danger'
-        default:
-            return 'bg-primary'
-    }
-}
 class DashHome extends Component {
     state = {  }
     componentDidMount() {
       
+    }
+    gotoSetup() {
+        window.location = '/setup'
     }
     getActIconBgcolor(title) {
         switch (title) {
@@ -57,6 +45,13 @@ class DashHome extends Component {
                         </span>
                     </div>
                     <div className="container">
+                       {!accountDetail.firstName && <div className="row" >
+                            <div className="col-12">
+                                <div className="alert alert-info text-center">
+                                    Account Setup is Required <button onClick={this.gotoSetup} className="btn btn-sm btn-primary">Setup</button>
+                                </div>
+                            </div>
+                        </div>}
                         <div className="row mt-2">
                             {
                                 accountDetail.accounts.map((item, index) => {

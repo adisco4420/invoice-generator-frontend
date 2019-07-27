@@ -2,7 +2,7 @@ import React from 'react';
 import { logout } from '../../../services/auth';
 
 const getName = (account) => {
-    return (account ? `${account.firstName} ${account.lastName}` : 
+    return (account ? `${account.firstName || account.email} ${account.lastName || ''}` : 
     <div className="d-inline"><i className="fa fa-spin fa-spinner"></i></div>)
 }
 function DashHeader({accountDetail}) {

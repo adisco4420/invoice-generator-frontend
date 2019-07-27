@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import env from '../../../env';
+import {  user } from '../../../services/auth'
 import {
   FormBuilder,
   FieldGroup,
@@ -16,6 +17,7 @@ const busCat = ['Individual/Freelancing', 'Accounting & Bookeeping', 'Agricultur
   'Social Services', 'Shipping and Logistics', 'Tourism', 'Web Development & Graphics Design', 'Others'
 ]
 let allCurrencys = {}
+const regToken = localStorage.getItem('Invoice-Reg-Token')
 const TextInput = ({ handler, touched, hasError, meta }) => (
   <div className={`${meta.inputClass || "col-md-12"} mb-2`}>
     <input
@@ -72,7 +74,7 @@ class Setup extends React.Component {
   }
 
   componentDidMount() {
-    if(!localStorage.getItem('Invoice-Reg-Token')) return this.props.history.push('/');
+    if(!user && !regToken) return this.props.history.push('/');
     this.fetchCurrency();
   }
   setupform = FormBuilder.group({
@@ -101,8 +103,8 @@ class Setup extends React.Component {
   }
   setupAccount = async () => {
     this.setState({loading: true, errMsg: false})
+    const token = regToken || user;
     try {
-      const token = localStorage.getItem('Invoice-Reg-Token')
       await axios.patch(`${env.Invoice_API}/user/setup`, this.setupform.value, {
         headers: {'Authorization': `Bearer ${token}`}
       });

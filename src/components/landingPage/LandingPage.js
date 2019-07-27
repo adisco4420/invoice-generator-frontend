@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
                     <div className="container">
                         <div className="row text-center py-4">
                             <div className="col-md-4">
-                            <i className="fa fa-clock-o fa-3x"></i>
+                            <i className="fa fa-clock fa-3x"></i>
                                 <h5>Save more time</h5>
                                 <p>Make getting paid a breeze. Our solution helps
                                     you save time on chasing payments and helps
