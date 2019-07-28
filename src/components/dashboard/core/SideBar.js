@@ -11,7 +11,7 @@ function SideBar() {
 
             <ul className="sidebar-list">
                 <li>
-                    <Link to="/dashboard"><i className="fa fa-tachometer-alt mr-3"></i>  Dashboard</Link>
+                    <a href="/dashboard"><i className="fa fa-tachometer-alt mr-3"></i>  Dashboard</a>
                 </li>
                 <li>
                     <Link to="/dashboard"><i className="fas fa-receipt mr-3"></i>  Invoices</Link>
@@ -20,7 +20,7 @@ function SideBar() {
                     <Link to="/dashboard"><i className="fa fa-box mr-3"></i>  Expenses</Link>
                 </li>
                 <li>
-                    <Link to="/dashboard"><i className="fa fa-users mr-3"></i>  Contacts</Link>
+                    <a href="/dashboard/contact"><i className="fa fa-users mr-3"></i>  Contacts</a>
                 </li>
                 <li>
                     <Link to="/dashboard"><i className="fa  fa-cog mr-3"></i>  Settings</Link>

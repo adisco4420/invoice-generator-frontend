@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Graph from '../../../common/graph';
 import Tips from './tips';
+import AddContact from '../contact/add-contact';
 class DashHome extends Component {
     state = {  }
     componentDidMount() {
@@ -40,8 +41,8 @@ class DashHome extends Component {
                     <div>
                         <span className="ml-3" style={{ fontSize: '25px' }}>Dashboard</span>
                         <span className="float-right mr-4">
-                            <button className="btn btn-primary btn-sm mr-2"><i className="fa fa-plus-circle"></i> Add Contact</button>
-                            <button className="btn btn-success btn-sm"><i className="fa fa-plus-circle"></i> Add Invoice</button>
+                            <button data-toggle="modal" data-target="#addContact" className="btn btn-primary btn-sm mr-2"><i className="fa fa-plus-circle"></i> Add Contact</button>
+                            <button  className="btn btn-success btn-sm"><i className="fa fa-plus-circle"></i> Add Invoice</button>
                         </span>
                     </div>
                     <div className="container">
@@ -79,6 +80,7 @@ class DashHome extends Component {
                         </div>
                     </div>
                 </div>
+                <AddContact />
             </div>
     
              );

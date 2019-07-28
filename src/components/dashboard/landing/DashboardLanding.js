@@ -6,6 +6,7 @@ import DashHeader from '../core/DashHeader';
 import DashHome from '../dashHome/DashHome';
 import http from '../../../services/http';
 import env from '../../../env'
+import Contact from '../contact/contact';
 class DashboardLanding extends React.Component {
     state = {
         accountDetail: null
@@ -31,7 +32,9 @@ class DashboardLanding extends React.Component {
             <DashHeader accountDetail={accountDetail} />
             <BrowserRouter>
             <div>
+            <Route exact path='/dashboard/contact' render={(props) => <Contact {...props} />} />            
             <Route exact path='/dashboard' render={(props) => <DashHome {...props} accountDetail={accountDetail}/>} />
+            
             </div>
           </BrowserRouter>
           </div>

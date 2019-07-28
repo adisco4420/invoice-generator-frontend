@@ -1,6 +1,6 @@
 import axios from 'axios';
 import env from '../env';
-import {user as token} from './auth'
+import {user as token, logout } from './auth'
 const api = env.Invoice_API;
 axios.interceptors.request.use((config) => {
     if(token && config.url.includes(api)) {
@@ -14,6 +14,12 @@ axios.interceptors.response.use(null, error => {
     if (error.response) {
         const { status , data } = error.response;
         ErrMsg = {status, message: data}
+        switch (ErrMsg.status) {
+            case 401:
+                return logout();
+            default:
+                break;
+        }
     }
     return Promise.reject(ErrMsg);
 
