@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ListContact = ({contacts}) => {
+const ListContact = ({contacts, onDelete}) => {
     return (
     <table className="table table-hover">
     <thead>
@@ -23,7 +23,10 @@ const ListContact = ({contacts}) => {
                 <td>{contact.address || 'null'}</td>
                 <td>
                     <span className="fa fa-eye mr-3" title="open"></span>
-                    <span className="fa fa-trash text-danger" title="delete"></span>
+                    <button onClick={() => onDelete(contact._id)} className="btn btn-danger btn-sm" title="delete">
+                    <span  className="fa fa-trash "></span>
+                    </button>
+                    
                 </td>
               </tr>)
         }) }

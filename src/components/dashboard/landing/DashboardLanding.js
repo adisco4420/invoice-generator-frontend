@@ -34,7 +34,6 @@ class DashboardLanding extends React.Component {
             <div>
             <Route exact path='/dashboard/contact' render={(props) => <Contact {...props} />} />            
             <Route exact path='/dashboard' render={(props) => <DashHome {...props} accountDetail={accountDetail}/>} />
-            
             </div>
           </BrowserRouter>
           </div>
