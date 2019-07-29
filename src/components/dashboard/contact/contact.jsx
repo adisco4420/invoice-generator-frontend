@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import AddContact from './add-contact';
-import { listContactSrv } from '../../../services/contact';
+import { listContactSrv, deleteContactSrv } from '../../../services/contact';
 import ListContact from './list-contact';
+import { toast } from 'react-toastify';
 
 class Contact extends Component {
     state = {
         contacts: null
     }
+    componentDidMount() {
+        this.fetchContact()
+    }
     fetchContact = async () => {
         const { data } = await listContactSrv();
         this.setState({contacts: data.data})
     }
-    componentDidMount() {
-        this.fetchContact()
+    deleteContact = async (id) => {
+        try {
+            await deleteContactSrv(id);
+            this.fetchContact();
+            toast.success('contact deleted')
+        } catch (error) {
+            console.log(error);
+        }
     }
     
 
@@ -31,7 +41,7 @@ class Contact extends Component {
                 <img width="40%" src="https://dashboard.invoice.ng/dboard/img/welcome.png" alt="imag"/>
                 <h5 className="mt-3">Stay more organised with your business contacts.</h5>
             </div> : 
-            <ListContact contacts={contacts}/>}
+            <ListContact onDelete={this.deleteContact} contacts={contacts}/>}
             <div className="col-12 text-center">
             <button data-toggle="modal" data-target="#addContact" className="btn btn-primary"><i className="fa fa-plus-circle"></i> Add Contact</button>
             </div>

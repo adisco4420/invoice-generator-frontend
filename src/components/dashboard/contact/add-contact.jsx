@@ -19,11 +19,13 @@ class AddContact extends Form {
     phoneNumber: Joi.number().required(), 
     address: Joi.string().required()
    }
-   closeModal() {
+   closeModal = () => {
     document.querySelector('#closeModal').click();
+    this.setState({data: reInialize(this.state.data), errMsg: null})
    }
    doSubmit = async () => {
-     const {onlistContact} = this.props
+     const {onlistContact} = this.props;
+     this.setState({errMsg: null})
      try {
      await addContactSrv(this.state.data);
      toast.success('contact saved')
@@ -43,7 +45,7 @@ class AddContact extends Form {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="addContactLabel">Add New Contact</h5>
-            <button type="button" id="closeModal" className="close" data-dismiss="modal" aria-label="Close">
+            <button onClick={this.closeModal} type="button" id="closeModal" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -63,7 +65,7 @@ class AddContact extends Form {
               {this.renderTextArea('address', 'textarea', 'Address', data.address )}
               </div>
               <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button onClick={this.closeModal} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             {this.renderButton('Add Contact')}
           </div>
             </form>

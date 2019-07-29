@@ -9,5 +9,5 @@ export const listContactSrv = () => {
     return http.get(`${api}/list`)
 }
 export const deleteContactSrv = (id) => {
-    return http.delete(`${api}/delete${id}`)
+    return http.delete(`${api}/delete/${id}`)
 }
