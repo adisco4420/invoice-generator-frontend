@@ -11,3 +11,6 @@ export const listContactSrv = () => {
 export const deleteContactSrv = (id) => {
     return http.delete(`${api}/delete/${id}`)
 }
+export const viewContactSrv = (id) => {
+    return http.get(`${api}/${id}`);
+}
