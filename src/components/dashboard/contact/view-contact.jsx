@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class ViewContact extends Component {
     componentDidMount() {
@@ -7,7 +7,11 @@ class ViewContact extends Component {
     
     state = {  }
     render() { 
-        return ( <p>view contact</p> );
+        return ( 
+            <div className="container">
+                <h5></h5>
+            </div>
+         );
     }
 }
  
