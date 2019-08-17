@@ -22,7 +22,7 @@ const ListContact = ({contacts, onDelete}) => {
                 <td>{contact.phoneNumber || 'null'}</td>
                 <td>{contact.address || 'null'}</td>
                 <td>
-                    <span className="fa fa-eye mr-3" title="open"></span>
+                    <a href={`contact/${contact._id}`}><span className="fa fa-eye mr-3" title="open"></span></a>
                     <button onClick={() => onDelete(contact._id)} className="btn btn-danger btn-sm" title="delete">
                     <span  className="fa fa-trash "></span>
                     </button>
