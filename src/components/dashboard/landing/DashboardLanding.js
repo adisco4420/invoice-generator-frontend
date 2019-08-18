@@ -32,7 +32,7 @@ class DashboardLanding extends React.Component {
             <div id="content">
             <DashHeader accountDetail={accountDetail} />
             <BrowserRouter>
-            <div  className="pt-3">
+            <div  className="container py-3">
             <Route exact path='/dashboard/contact' render={(props) => <Contact {...props} />} />  
             <Route exact path='/dashboard/contact/:id' render={(props) => <ViewContact {...props} />} />            
             <Route exact path='/dashboard' render={(props) => <DashHome {...props} accountDetail={accountDetail}/>} />
