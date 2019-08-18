@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Graph from '../../../common/graph';
 import Tips from './tips';
 import AddContact from '../contact/add-contact';
+import PageHeader from '../../../common/header';
+import CardDetail from '../../../common/card-detail';
 class DashHome extends Component {
     state = {  }
     componentDidMount() {
@@ -28,7 +30,6 @@ class DashHome extends Component {
                 <div className="container">
                     <div className="row mt-3">
                         <div className="col-12 text-center">
-                            {/* <p>no data</p> */}
                             <p><span className="fa fa-spinner fa-spin fa-3x"></span></p>
                         </div>
                     </div>
@@ -37,15 +38,15 @@ class DashHome extends Component {
         } else {
             return ( 
                 <div>
-                <div className="px-4">
+                <div className="">
                     <div>
-                        <span className="ml-3" style={{ fontSize: '25px' }}>Dashboard</span>
-                        <span className="float-right mr-4">
+                        <PageHeader title="Dashboard" />
+                        <span className="float-right ">
                             <button data-toggle="modal" data-target="#addContact" className="btn btn-primary btn-sm mr-2"><i className="fa fa-plus-circle"></i> Add Contact</button>
                             <button  className="btn btn-success btn-sm"><i className="fa fa-plus-circle"></i> Add Invoice</button>
                         </span>
                     </div>
-                    <div className="container">
+                    <div className="">
                        {!accountDetail.firstName && <div className="row" >
                             <div className="col-12">
                                 <div className="alert alert-info text-center">
@@ -54,21 +55,7 @@ class DashHome extends Component {
                             </div>
                         </div>}
                         <div className="row mt-2">
-                            {
-                                accountDetail.accounts.map((item, index) => {
-                                    return <div key={index} className="col-md-4">
-                                        <div className="card" style={{ minHeight: '140px' }}>
-                                            <div className="card-body mt-3">
-                                                <h5>{item.balance + '.00'}</h5>
-                                                <button style={{ padding: '0px 5px' }} className={`btn btn-sm text-light text-lowercase ${this.getActIconBgcolor(item.title).bgColor}`}>
-                                                    {`${item.title} - usd`}
-                                                </button>
-                                                <div className="float-right"><i className={`fa ${this.getActIconBgcolor(item.title).icon} fa-2x`}></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                })
-                            }
+                            <CardDetail data={accountDetail.accounts} />
                         </div>
                         <div className="row mt-3">
                             <div className="col-md-8">
