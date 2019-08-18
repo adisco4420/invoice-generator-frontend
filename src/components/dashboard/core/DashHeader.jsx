@@ -7,7 +7,7 @@ const getName = (account) => {
 }
 function DashHeader({accountDetail}) {
     return (
-        <nav className="navbar dashnav navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar dashnav navbar-expand-lg navbar-light bg-light mb-0">
             <div className="container-fluid">
                 <button type="button" id="sidebarCollapse" className="btn btn-info">
                     <i className="fa fa-align-left"></i>
