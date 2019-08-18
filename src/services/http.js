@@ -14,12 +14,16 @@ axios.interceptors.response.use(null, error => {
     if (error.response) {
         const { status , data } = error.response;
         ErrMsg = {status, message: data}
-        switch (ErrMsg.status) {
-            case 401:
-                return logout();
-            default:
-                break;
+        const { responseURL } = error.response.request
+        if (token && !responseURL.includes(api + '/user')) {
+            switch (ErrMsg.status) {
+                case 401:
+                    return logout();
+                default:
+                    break;
+            }
         }
+        
     }
     return Promise.reject(ErrMsg);
 
