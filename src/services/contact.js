@@ -14,3 +14,7 @@ export const deleteContactSrv = (id) => {
 export const viewContactSrv = (id) => {
     return http.get(`${api}/${id}`);
 }
+export const updateContactSrv = (id, body) => {
+    console.log(body);
+    return http.put(`${api}/${id}`, body);
+}
